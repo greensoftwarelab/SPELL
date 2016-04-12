@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ====================================================
+    Extension of the NetBeans Java SE Ant build to ANTLR
+    ====================================================
+-->
+<project name="build-antlr-impl">
+
+    <!--Target to call when just the ANTLR output is needed.-->
+    <target name="antlr" depends="init,-do-antlr"
+        description="Process the grammar files with ANTLR." />
+
+    <!--Property definitions here will precede reading various properties
+        files, and therefore take precedence.
+    -->    
+    <target name="-antlr-pre-init">
+        <!--Cause tools (javac, javadoc) to include generated sources.
+            do.depend comes from file nbproject/private/private.properties .
+            Maybe it is owned by a property sheet somewhere in the IDE,
+            and we ought not to override it, but where?
+            -->
+        <property name="do.depend" value="true"/>
+    </target>
+    
+    <!--Execute the ANTLR processing of the grammar directories. This results
+        in generated code in "${build.generated.sources.dir}/antlr-output".
+        Token files are written to that exact directory. Java files are
+        written to package folders below that root, according to the
+        location of the .g file below "${src.grammar.dir}". This location
+        comes from a properties set by the IDE. The arrangement of .g files
+        must correspond to the Java package statements they contain.
+    -->
+    <target name="-do-antlr">
+
+        <!--Where the grammar files actually reside. (This can be the root of
+            a tree structured according to *destination* Java packages.)
+            src.grammar.dir is set in the IDE's project properties file as a result
+            of naming the grammar sub-directory as a source.
+        -->
+        <property name="antlr.src.dir" location="${src.grammar.dir}"/>
+        
+        <!--Destination for generated Java files.-->
+        <property name="antlr.generated.dir"
+                  location="${build.generated.sources.dir}/antlr-output"/>
+        <mkdir dir="${antlr.generated.dir}"/>
+
+        <!--Compose file list to pass to ANTLR.-->
+        <!--Method here to deal with paths that contain spaces. Credit to
+            stackoverflow.com question 2148390-->
+        <pathconvert property="antlr.src.list.0" pathsep="' '" >
+            <!-- Make a list of all the .g grammar files in the tree.-->
+            <fileset dir="${antlr.src.dir}"  >
+                <include name="**/*.g" />
+            </fileset>
+            <!--Trim the names to specifications relative to the grammar base
+            directory.-->
+            <mapper type="glob"
+                from="${antlr.src.dir}${file.separator}*.g"
+                to=  "*.g" />
+        </pathconvert>
+        <!--Last bit of dealing with paths that contain spaces-->
+        <property name="antlr.src.list" value="'${antlr.src.list.0}'"/>
+
+        <!-- -->
+        <echo>ANTLR will translate ${antlr.src.list}</echo>
+        <echo>working relative to ${antlr.src.dir}</echo>
+        <echo>and generate files in ${antlr.generated.dir}</echo>
+        <!--
+        <echoproperties prefix="build" />
+        <echoproperties prefix="javac" />
+        -->
+
+        <!--Implementation using the ANTLR3 task does not accept multiple
+            source files. So use the java task. When grammar files are
+            identified by relative paths, the ANTLR Tool produces corresponding
+            package-structured output. In this call, ANTLR runs with the
+            grammar base directory as the current directory.
+            -->
+        <java classname="org.antlr.Tool" fork="true" dir="${antlr.src.dir}"
+                failonerror="true">
+            <arg value="-verbose"/>
+            <arg value="-report"/>
+            <arg value="-make"/>
+            <arg value="-o"/>
+            <arg path="${antlr.generated.dir}"/>
+            <arg value="-lib"/>
+            <arg path="${antlr.generated.dir}"/>
+            <arg line="${antlr.src.list}"/>
+            <classpath>
+                <!--IDE will have included ANTLR jar here-->
+                <pathelement path="${javac.classpath}"/>
+            </classpath>
+
+            <jvmarg value="-Xmx512M"/>
+        </java>
+
+    </target>
+
+</project>

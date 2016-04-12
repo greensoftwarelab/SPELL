@@ -23,8 +23,7 @@ public class Main {
                         "> funcao_E [ m = graph, t = 1, cpu=3.2 ]\n" +
                         "< funcao_E [ m = graph, t = 5, cpu=3.3 ]\n" +
                         "< funcao_A [ m = graph, t = 5, cpu=4.3 ]\n";
-        String f = "1";
-        String filePath = args.length > 0 ? args[0] : "/home/states/Desktop/repos/green-lab/work/Spell/"+f+".outputspell";
+        String filePath = args.length > 0 ? args[0] : "fixed.path.to.file";
         //OutputLexer lexer = new OutputLexer(new ANTLRStringStream(input));
         OutputLexer lexer = new OutputLexer(new ANTLRInputStream(new FileInputStream(filePath)));
         OutputParser parser = new OutputParser(new CommonTokenStream(lexer),0,12);
