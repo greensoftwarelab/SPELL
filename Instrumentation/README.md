@@ -1,7 +1,7 @@
 Introduction
 --------------------------------------------------------------
 
-This tool automatically inserts (jRapl) energy reading method calls from the JWrapper package/EnergyWrapper class. 
+This tool automatically inserts (jRapl) energy reading method calls from the JWrapper package/EnergyWrapper class, generating a file with the method execution trace, execution time, and energy consumption values.
 
 For a general explanation of jRapl, check out [webpage](http://kliu20.github.io/jRAPL/).
 
@@ -54,4 +54,4 @@ In some cases with nested if-cases with exceptions, the end call might not be pl
 Contact and other information
 --------------------------------------------------------------
 - Rui Pereira {ruipereira@di.uminho.pt}
-- GreenLab {greenlab@di.uminho.pt}
+- Green Software Lab {greenlab@di.uminho.pt}
