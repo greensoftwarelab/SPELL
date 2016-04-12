@@ -31,27 +31,19 @@ Expected output
 
 When running your program with the instrumentation and RaplRunner, a file with the following characteristics is produced:
 
-``> function_A [ m = package, t = 100, cpu=2.3 ]
-``
-``> function_E [ m = package, t = 100, cpu=3.2 ]
-``
-``< function_E [ m = package, t = 500, cpu=3.3 ]
-``
-``< function_A [ m = package, t = 500, cpu=4.3 ]
-``
-``> function_A [ m = package, t = 100, cpu=2.3 ]
-``
-``> function_E [ m = package, t = 100, cpu=3.2 ]
-``
-``< function_E [ m = package, t = 500, cpu=3.3 ]
-``
-``> function_E [ m = package, t = 100, cpu=3.2 ]
-``
-``< function_E [ m = package, t = 500, cpu=3.3 ]
-``
-``< function_A [ m = package, t = 500, cpu=4.3 ]
-``
+```
+> function_A [ m = package, t = 100, cpu=2.3 ]
+> function_E [ m = package, t = 100, cpu=3.2 ]
+< function_E [ m = package, t = 500, cpu=3.3 ]
+< function_A [ m = package, t = 500, cpu=4.3 ]
+> function_A [ m = package, t = 100, cpu=2.3 ]
+> function_E [ m = package, t = 100, cpu=3.2 ]
+< function_E [ m = package, t = 500, cpu=3.3 ]
+> function_E [ m = package, t = 100, cpu=3.2 ]
+< function_E [ m = package, t = 500, cpu=3.3 ]
+< function_A [ m = package, t = 500, cpu=4.3 ]
 
+```
 
 
 Known bugs
