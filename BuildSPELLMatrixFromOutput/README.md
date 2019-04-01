@@ -13,7 +13,7 @@ Each test run should be seperated by a semi-colon (;). An example can be seen be
 Example input/output
 --------------------------------------------------------------
 
-######Input:
+###### Input:
 
 ```
 >Class_method1 [ m=example, cpu = 48.005478, t = 1455 ]
@@ -37,7 +37,7 @@ Example input/output
 <Class_method5 [ m=spell, cpu = 66.920093, t = 1555 ]
 <Class_method1 [ m=spell, cpu = 67.720093, t = 1955 ]
 ```
-######Output SPELL matrix:
+###### Output SPELL matrix:
 
 ```
 [[ t = 2.0E12, n = 1, cpu = 0.05192600000000169 ][ t = 1.0E12, n = 1, cpu = 3.000000006636583E-6 ][ t = 1.0E12, n = 1, cpu = 1.0000100000000032 ][ t = 4.42E14, n = 1, cpu = 0.0799999999999983 ] _ ]

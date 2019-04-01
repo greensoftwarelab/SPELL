@@ -10,9 +10,6 @@
 <project name="BuildSPELLMatrixFromOutput" default="default" basedir=".">
     <description>Builds, tests, and runs the project BuildSPELLMatrixFromOutput.</description>
     <import file="nbproject/build-impl.xml"/>
-    <import file="nbproject/build-antlr-impl.xml"/>
-    <target name="-pre-init" depends="-antlr-pre-init"/>
-    <target name="-pre-compile" depends="antlr" />
     <!--
 
     There exist several targets which are by default empty and which can be 

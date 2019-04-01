@@ -12,7 +12,7 @@ After compiling the project, run the main class (sell.Main) with arg[0] as the p
 Example input/output
 --------------------------------------------------------------
 
-######Input SPELL matrix
+###### Input SPELL matrix
 
 ```
 [ [ cpu = 37, n = 1, t = 75 ] [ cpu = 61, n = 2, t = 102 ] _ [ cpu = 42, n = 1, t = 34 ] ]
@@ -21,7 +21,7 @@ Example input/output
 [ [ cpu = 37, n = 3, t = 74 ] [ cpu = 66, n = 2, t = 105 ] _ [ cpu = 61, n = 2, t = 43 ] ]
 [ [ cpu = 39, n = 2, t = 75 ] [ cpu = 54, n = 3, t = 100 ] [ cpu = 51, n = 4, t = 60 ] [ cpu = 65, n = 2, t = 60 ] ]
 ```
-######Output similarities:
+###### Output similarities:
 
 ```
 Oracle
